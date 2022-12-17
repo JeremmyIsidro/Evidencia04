@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar imaganes</title>
+</head>
+<body>
+    <!-- Agrego un boton para empezar  -->
+  <input type="file" name="" id="img">  
+  <button id="boton"> SUBIR</button>
+
+<!-- ------------------------ -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAhqlOH-dab_KOatJNzUfrIFfU-EeIcKQc",
+      authDomain: "semana-13-14.firebaseapp.com",
+      projectId: "semana-13-14",
+      storageBucket: "semana-13-14.appspot.com",
+      messagingSenderId: "195368988386",
+      appId: "1:195368988386:web:358de2f2c073aa6237b8bb"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    // Initialize Cloud Storage and get a reference to the service
+    const storage = getStorage(app);
+    // creamos un evento para subir las indormación
+    document.getElementById("boton").addEventListener("click", function(){
+        // SE CREA UN BARIABLE QUE GUARDARA LOS ARCHIVOS SUBIDOS
+        var file = document.getElementById("img").file[0]
+
+        const storage = getStorage();
+        const storageRef = ref(storage, 'uploadedimage');
+
+        // 'file' comes from the Blob or File API
+        uploadBytes(storageRef, file).then((snapshot) => {
+        console.log("sadjsadnajsda")
+        alert("El archivo esta cargado")
+        });  
+    })
+  </script>
+</body>
+</html>
